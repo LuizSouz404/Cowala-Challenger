@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molduras.js</title>
+
+    <link rel="shortcut icon" href="/assets/moldura/logo.png" type="image/png">
+
+    <link rel="stylesheet" href="/styles/resetStyles.css">
+    <link rel="stylesheet" href="/styles/MoldurasStyles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main class="mainContainer">
+        <div class="container">
+            <header class="headerContainer">
+                <img src="/assets/moldura/logo.png" alt="Logo">
+                <div>
+                    <strong>MolduraJS</strong>
+                    <span>Gerador de moldura em texto</span>
+                </div>
+            </header>
+
+            <div class="content">
+                <label for="oldText">
+                    <strong>Column table</strong>
+
+                    <input id="columnTable" type="number">
+                </label>
+
+                <label for="newText">
+                    <strong>Row table</strong>
+
+                    <input id="rowTable" type="number">
+                </label>
+
+                <button class="checkButton" onclick="generateMoldura()">Gerar moldura</button>
+
+                <div class="molduraCanvas">
+                    <code class="molduraCanvasItems" id="molduraCanvas"></code>
+                </div>
+            </div>
+
+            <footer class="footerContainer">
+                <img class="footerImg" src="/assets/logoCowala.svg" alt="Cowala Logo">
+                <strong>Cowala Challenger</strong>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        function generateMoldura() {
+            let j = 0, i = 0;
+
+            const rowTableValue = document.getElementById("rowTable").value;
+            const columnTableValue = document.getElementById("columnTable").value;
+
+            if (!!document.getElementById("molduraCanvas")) {
+                document.getElementById("molduraCanvas").innerHTML = ""
+            }
+
+            for (j = 0; j < rowTableValue; j++) {
+                let newString = "";
+                i = 0;
+                for (i = 0; i < columnTableValue; i++) {
+                    let string = document.createElement('span');
+                    if (j === 0 && i === 0 || j === 0 && i === columnTableValue - 1 || j === rowTableValue - 1 && i === 0 || j === rowTableValue - 1 && i === columnTableValue - 1) {
+                        newString = newString + "+"
+                    } else if (j === 0 || j === rowTableValue - 1 || i === 0 || i === columnTableValue - 1) {
+                        newString = newString + "-"
+                    } else {
+                        newString += " "
+                    }
+                }
+
+                console.log(newString);
+
+                let lineSpan = document.createElement("span");
+                let breakLine = document.createElement("br");
+
+                lineSpan.innerText = newString;
+
+                document.getElementById("molduraCanvas").appendChild(lineSpan)
+                document.getElementById("molduraCanvas").appendChild(breakLine)
+                document.getElementById("molduraCanvas").classList.add("isActive")
+            }
+        }
+    </script>
+</body>
+
+</html>

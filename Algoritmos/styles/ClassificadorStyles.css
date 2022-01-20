@@ -1,0 +1,76 @@
+main.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  width: 100vw;
+  background: #F4F4F4;
+}
+
+div.container {
+  width: 100%;
+  max-width: 280px;
+  min-height: 700px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+header.headerContainer {
+  width: 100%;
+  background: #B9FFA0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+header.headerContainer img {
+  border-radius: 100%;
+  margin-bottom: 1rem;
+}
+
+div.memberListContainer {
+  margin: 1rem;
+}
+
+ul.listContainer {
+  list-style: none;
+  padding: .5rem 0;
+}
+
+li.listContent {
+  padding: 0 0.875rem;
+  height: 3.75rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+li.listContent+li.listContent {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+li.listContent p {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+li.listContent span {
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+@media (max-width: 380px) {
+  div.container {
+    height: 100%;
+    max-width: none;
+  }
+}

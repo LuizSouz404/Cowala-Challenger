@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci.js</title>
+    <link rel="shortcut icon" href="/assets/faviconFibonacci.png" type="image/png">
+
+    <link rel="stylesheet" href="/styles/resetStyles.css">
+    <link rel="stylesheet" href="/styles/FibonacciStyles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main class="mainContainer">
+        <div class="container">
+            <div class="content">
+                <img class="logoImg" src="/assets/fibonacci/fibonacciLogo.svg" alt="Fibonnaci">
+
+                <label class="inputContainer" for="fibonacciInput">
+                    <strong>Quantos termos</strong>
+
+                    <div class="inputContent">
+                        <input id="fibonacciInput" type="number">
+                        <button onclick="fibonacci()">Calcular</button>
+                    </div>
+                </label>
+
+                <div id="answerContainer" class="answerContainer">
+
+                </div>
+
+                <img id="fibonacciSequenceImg" class="fibonacciSequenceImg"
+                    src="/assets/fibonacci/fibonnaciSequence.gif" alt="Fibonacci Sequence">
+
+            </div>
+
+            <footer class="footerContainer">
+                <img class="footerImg" src="/assets/logoCowala.svg" alt="Cowala">
+
+                <strong>Cowala Challenger</strong>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        function fibonacci() {
+            let howMany = parseInt(document.getElementById('fibonacciInput').value);
+            let fibonacciSequence = [];
+            let resposta = document.getElementById('answerContainer');
+
+            if (howMany === 1) {
+                return resposta.innerHTML = `Resposta: [0]`
+            }
+
+            fibonacciSequence[0] = 0;
+            fibonacciSequence[1] = 1;
+            for (let i = 2; i <= howMany - 1; i++) { // i pula as duas primeiras sequência já criadas acima
+                fibonacciSequence[i] = fibonacciSequence[i - 2] + fibonacciSequence[i - 1];
+                console.log(fibonacciSequence);
+            }
+
+            let answerText = document.createElement("strong");
+
+            answerText.innerText = `Resposta:\n [${fibonacciSequence.toString().replaceAll(",", ", ")}]`;
+            answerText.classList.add("answerText");
+
+            resposta.innerHTML = "";
+            resposta.appendChild(answerText);
+
+            document.getElementById("fibonacciSequenceImg").classList.add("active")
+        }
+    </script>
+</body>
+
+</html>

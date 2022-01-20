@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificador.js</title>
+
+    <link rel="shortcut icon" href="/assets/classificador/imgGroup.png" type="image/png">
+
+    <link rel="stylesheet" href="/styles/resetStyles.css">
+    <link rel="stylesheet" href="/styles/ClassificadorStyles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="mainContainer">
+        <div id="container" class="container">
+            <header class="headerContainer">
+                <img src="/assets/classificador/imgGroup.png" alt="Cowala image group">
+                <strong>Cowala Group</strong>
+            </header>
+
+            <div class="memberListContainer">
+                <strong>Members</strong>
+
+                <ul id="listContainer" class="listContainer">
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let arrayMembers = [{
+            "souEu": false,
+            "responsavel": false,
+            "nome": "Camila Santos"
+        }, {
+            "souEu": false,
+            "responsavel": false,
+            "nome": "Jonas Brothers"
+        }, {
+            "souEu": false,
+            "responsavel": true,
+            "nome": "Brunna"
+        }, {
+            "souEu": false,
+            "responsavel": true,
+            "nome": "Wilgner Lopes"
+        }, {
+            "souEu": true,
+            "responsavel": false,
+            "nome": "Luiz Souza"
+        }, {
+            "souEu": false,
+            "responsavel": true,
+            "nome": "Victor Assis"
+        }];
+
+        alert(JSON.stringify(arrayMembers));
+
+        (function organizeMembers() {
+            const newArray = arrayMembers.sort((compareValueA, compareValueB) => {
+                return (compareValueA.nome > compareValueB.nome) ? 0 : (compareValueB.nome > compareValueA.nome) ? -1 : 1;
+            }).sort((compareValueA, compareValueB) => {
+                return (compareValueA.responsavel === compareValueB.responsavel) ? 0 : compareValueA.responsavel ? -1 : 1;
+            }).sort((compareValueA, compareValueB) => {
+                return (compareValueA.souEu === compareValueB.souEu) ? 0 : compareValueA.souEu ? -1 : 1;
+            })
+
+            newArray.map(data => {
+                const newElementLi = document.createElement("li");
+                newElementLi.classList.add("listContent");
+                const p = document.createElement("p");
+                const span = document.createElement("span");
+
+                p.innerText = `${data.nome}`
+                span.innerText = data.souEu || data.responsavel ? `${data.souEu ? "Eu" : ""} ${data.responsavel ? "Admin" : ""}` : "Membro"
+                newElementLi.appendChild(p);
+                newElementLi.appendChild(span);
+
+                document.getElementById("listContainer").appendChild(newElementLi);
+            });
+            console.log(newArray);
+        })()
+
+    </script>
+</body>
+
+</html>

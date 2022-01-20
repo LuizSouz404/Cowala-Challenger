@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faxina.js</title>
+
+    <link rel="shortcut icon" href="/assets/faxina/logo.svg" type="image/svg">
+
+
+    <link rel="stylesheet" href="/styles/resetStyles.css">
+    <link rel="stylesheet" href="/styles/FaxinaStyles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="mainContainer">
+        <div class="container">
+            <header class="headerContainer">
+                <img src="/assets/faxina/logo.svg" alt="Logo">
+                <div>
+                    <strong>FaxinaJS</strong>
+                    <span>Remove itens NULL</span>
+                </div>
+            </header>
+
+            <div class="content">
+                <label for="oldText">
+                    <strong>String</strong>
+
+                    <textarea rows="10" placeholder='Exemplo: {"foo": "bar", "animal": null, "item":"glue"}'
+                        name="oldText" id="oldText"></textarea>
+                </label>
+
+                <button class="cleanButton" onclick="cleanObject()">Limpar</button>
+
+                <label for="newText">
+                    <strong>String limpa</strong>
+
+                    <textarea rows="10" readonly placeholder='Exemplo: {"foo": "bar", "item":"glue"}' name="newText"
+                        id="newText"></textarea>
+                    <button class="copyIcon" onclick="copyText()"><img src="/assets/faxina/copyboard.svg"
+                            alt="Copiar text"></button>
+                </label>
+            </div>
+
+            <footer class="footerContainer">
+                <img class="footerImg" src="/assets/logoCowala.svg" alt="Cowala Logo">
+                <strong>Cowala Challenger</strong>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        let objectData = { "fizz": "buzz", "foo": null, "bar": 42 };
+
+        function cleanObject() {
+            let oldText = document.getElementById("oldText").value;
+
+            if (!oldText) {
+                return;
+            }
+
+            let oldTextTransform = JSON.parse(`${oldText}`)
+
+            Object.filter = (object, predicate) => //Object.filter recebe uma função para filtrar um objeto, definindo key e value
+                Object.keys(object)
+                    .filter(key => predicate(object[key]))
+                    .reduce((res, key) => Object.assign(res, { [key]: object[key] }), {}); // Aqui ele devolve um novo array usando o reduce com os valores {index: index[value]}} 
+
+            const filtered = Object.filter(oldTextTransform, isNull => isNull !== null);
+
+            console.log(objectData)
+
+            document.getElementById("newText").innerText = `${JSON.stringify(filtered)}`;
+        }
+
+        function copyText() {
+            navigator.clipboard.writeText(document.getElementById("newText").value);
+        }
+    </script>
+</body>
+
+</html>

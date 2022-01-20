@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validade.js</title>
+
+    <link rel="shortcut icon" href="/assets/Validade/logo.svg" type="image/svg">
+
+    <link rel="stylesheet" href="/styles/resetStyles.css">
+    <link rel="stylesheet" href="/styles/ValidadeStyles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main class="mainContainer">
+        <div class="container">
+            <header class="headerContainer">
+                <img src="/assets/Validade/logo.svg" alt="Logo">
+                <div>
+                    <strong>ValidadeJS</strong>
+                    <span>Checar validade de uma data</span>
+                </div>
+            </header>
+
+            <div class="content">
+                <label for="oldText">
+                    <strong>Data base</strong>
+
+                    <input type="datetime" placeholder="DD/MM/YYYY" id="previousData">
+                </label>
+
+                <label for="newText">
+                    <strong>Dias corridos</strong>
+
+                    <input type="text" placeholder="XXXd" id="validDate">
+                </label>
+
+                <button class="checkButton" onclick="isValidDate()">Checar validade</button>
+
+                <div id="result" class="result">
+                    <div id="resultRight" class="resultContainer">
+                        <img src="/assets/Validade/Check.svg" alt="check">
+                        <div>
+                            <strong>Data ainda está válida</strong>
+                            <span>A data ainda não chegou em seu tempo limite</span>
+                        </div>
+                    </div>
+                    <div id="resultWrong" class="resultContainer">
+                        <img src="/assets/Validade/Wrong.svg" alt="wrong">
+                        <div>
+                            <strong>Data está inválida</strong>
+                            <span>A data chegou em seu tempo limite</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footerContainer">
+                <img class="footerImg" src="/assets/logoCowala.svg" alt="Cowala Logo">
+                <strong>Cowala Challenger</strong>
+            </footer>
+        </div>
+    </main>
+
+    <script>
+        const numberPattern = /\d+/g;
+
+        function isValidDate() {
+            let previousDataValue = document.getElementById("previousData").value;
+            let validDateValue = document.getElementById("validDate").value;
+
+            const dateMatchType = previousDataValue.match(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/);
+
+            if (validDateValue === "" || previousDataValue === "" || !dateMatchType) {
+                return;
+            }
+
+            const splitDate = previousDataValue.split("/");
+            const newPreviousDateValue = new Date(splitDate[2], splitDate[1] - 1, splitDate[0]);
+
+            const newNumber = parseInt(validDateValue.replace(/\D/g, ""));
+
+            const newDateValid = new Date();
+
+            newDateValid.setDate(newDateValid.getDate() + newNumber);
+
+            if (newPreviousDateValue >= newDateValid) {
+                document.getElementById("resultWrong").classList.remove("isInvalid")
+                document.getElementById("resultRight").classList.add("isValid")
+            } else {
+                document.getElementById("resultRight").classList.remove("isValid")
+                document.getElementById("resultWrong").classList.add("isInvalid")
+            }
+        }
+    </script>
+</body>
+
+</html>

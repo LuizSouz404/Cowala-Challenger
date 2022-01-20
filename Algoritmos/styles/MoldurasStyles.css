@@ -1,0 +1,164 @@
+main.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  width: 100vw;
+  background: #fff;
+}
+
+div.container {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+header.headerContainer {
+  width: 100%;
+  background: transparent;
+  color: #1E201D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+
+}
+
+header.headerContainer img {
+  height: 3.75rem;
+  margin-right: 1rem;
+}
+
+header.headerContainer div {
+  display: flex;
+  flex-direction: column;
+}
+
+header.headerContainer div strong {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+}
+
+header.headerContainer div span {
+  font-size: 0.95rem;
+}
+
+footer.footerContainer {
+  width: 100%;
+  height: 3rem;
+  background: #111111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+}
+
+img.footerImg {
+  margin-right: .75rem;
+  height: 2.25rem;
+}
+
+div.content {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem 5rem;
+}
+
+div.content label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+div.content label+button {
+  margin: 0 0 2rem;
+}
+
+div.content label input {
+  margin: .85rem 0;
+  resize: none;
+  outline: 0;
+  border: 0;
+  border-radius: 10px;
+  padding: 15px;
+  background: #F1F1F1;
+  font-size: 0.85rem;
+  word-break: break-word;
+}
+
+div.content button.checkButton {
+  background: #1E201D;
+  color: #F1F1F1;
+  border-radius: 10px;
+  outline: 0;
+  border: 0;
+  font-size: 1.25rem;
+  padding: 0.5rem 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+div.result {
+  position: relative;
+}
+
+div.molduraCanvas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  background: #F1F1F1;
+  font-family: 'Ubuntu Mono', monospace;
+}
+
+code.molduraCanvasItems.isActive {
+  padding: 1rem;
+}
+
+@media (max-width: 575px) {
+  div.container {
+    height: 100%;
+    width: 100%;
+    max-width: none;
+    border-radius: 0;
+  }
+
+  div.content {
+    padding: 3rem 2rem;
+  }
+
+  div.resultContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 6px;
+    visibility: hidden;
+    text-align: center;
+    opacity: 0;
+  }
+
+  div.resultContainer img {
+    max-width: 50px;
+  }
+
+  div.resultContainer div strong {
+    margin-bottom: .5rem;
+  }
+}
