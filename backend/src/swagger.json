@@ -1,0 +1,208 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Cowala Documentation",
+    "description": "This is an Api Product",
+    "version": "1.0.0",
+    "contact": {
+      "email": "luiz.souz404@gmail.com"
+    }
+  },
+  "paths": {
+    "/product/create": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Create an product",
+        "description": "Create an new product",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "item": {
+                    "type": "string"
+                  },
+                  "preco": {
+                    "type": "number"
+                  }
+                },
+                "example": {
+                  "item": "Arroz",
+                  "preco": 100
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/product/list_products": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "List all products",
+        "description": "List all products",
+        "responses": {
+          "201": {
+            "description": "Sucess",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "item": {
+                        "type": "string"
+                      },
+                      "preco": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/product_detail/{product_id}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Show detail product",
+        "description": "Show a unique detail product",
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "description": "The product id need to be provided.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Sucess",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "item": {
+                      "type": "string"
+                    },
+                    "preco": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      }
+    },
+    "/product/update_product/{product_id}": {
+      "put": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Updated product price",
+        "description": "Update price product by id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "product_id",
+            "in": "path",
+            "description": "Price product will be updated",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated product object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "preco": {
+                  "type": "number"
+                }
+              },
+              "example": {
+                "preco": 75
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Sucess",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "item": {
+                      "type": "string"
+                    },
+                    "preco": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      }
+    },
+    "/product/delete_product/{product_id}": {
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "summary": "Delete an product",
+        "description": "Delete an product",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "description": "The name that needs to be fetched. Use user1 for testing. ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "Product not found"
+          }
+        }
+      }
+    }
+  }
+}
