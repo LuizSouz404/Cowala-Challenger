@@ -1,9 +1,9 @@
 import { ConversionsRepository } from "../../repositories/implementations/ConversionRepository";
-import { DetailConversionsController } from "./DetailConversionsController";
-import { DetailConversionsUseCase } from "./DetailConversionsUseCase";
+import { DetailConversionController } from "./DetailConversionController";
+import { DetailConversionUseCase } from "./DetailConversionUseCase";
 
 const conversionsRepository = ConversionsRepository.getInstance();
-const detailConversionsUseCase = new DetailConversionsUseCase(conversionsRepository);
-const detailConversionsController = new DetailConversionsController(detailConversionsUseCase);
+const detailConversionUseCase = new DetailConversionUseCase(conversionsRepository);
+const detailConversionController = new DetailConversionController(detailConversionUseCase);
 
-export { detailConversionsController }
+export { detailConversionController }

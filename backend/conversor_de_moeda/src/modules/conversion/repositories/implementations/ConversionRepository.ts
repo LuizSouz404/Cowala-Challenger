@@ -45,7 +45,11 @@ class ConversionsRepository implements IConversionsRepository {
   }
 
   deleteConversion(id: number): void {
-    throw new Error("Method not implemented.");
+    const product = this.conversions.findIndex(product => product.id === id);
+
+    if (product === -1) throw new AppError("Product not found", 404);
+
+    this.conversions.splice(product, 1);
   }
 
 }

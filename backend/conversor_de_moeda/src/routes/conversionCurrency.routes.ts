@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { createConversionController } from "../modules/conversion/useCases/createConversion";
-import { detailConversionsController } from "../modules/conversion/useCases/detailConversion";
+import { deleteConversionController } from "../modules/conversion/useCases/deleteConversion";
+import { detailConversionController } from "../modules/conversion/useCases/detailConversion";
 import { listAllConversionsController } from "../modules/conversion/useCases/listAllConversion";
 
 const conversionRoutes = Router();
@@ -14,11 +15,11 @@ conversionRoutes.get("/list_conversions", (request, response) => {
 });
 
 conversionRoutes.get("/detail_conversions/:conversionID", (request, response) => {
-  return detailConversionsController.handle(request, response);
+  return detailConversionController.handle(request, response);
 });
-/*
+
 conversionRoutes.delete("/delete_conversions/:conversionID", (request, response) => {
   return deleteConversionController.handle(request, response);
-});*/
+});
 
 export { conversionRoutes };

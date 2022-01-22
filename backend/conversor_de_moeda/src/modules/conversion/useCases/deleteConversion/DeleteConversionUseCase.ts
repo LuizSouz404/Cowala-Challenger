@@ -1,11 +1,11 @@
 import { IConversionsRepository } from "../../repositories/IConversionRepository";
 
-class DetailConversionsUseCase {
+class DeleteConversionUseCase {
   constructor(private conversionsRepository: IConversionsRepository) { }
 
   execute(id: number) {
-    return this.conversionsRepository.findById(id);
+    return this.conversionsRepository.deleteConversion(id);
   }
 }
 
-export { DetailConversionsUseCase }
+export { DeleteConversionUseCase }
