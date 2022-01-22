@@ -1,3 +1,4 @@
+import { AppError } from "../../../../errors/AppError";
 import { Conversion } from "../../model/Conversion";
 import { IConversionDTO, IConversionsRepository } from "../IConversionRepository";
 
@@ -30,12 +31,19 @@ class ConversionsRepository implements IConversionsRepository {
 
     return conversion;
   }
+
   listAllConversions(): Conversion[] {
     return this.conversions;
   }
+
   findById(id: number): Conversion {
-    throw new Error("Method not implemented.");
+    const conversion = this.conversions.find(product => product.id === id);
+
+    if (!conversion) throw new AppError("Product not found", 404);
+
+    return conversion;
   }
+
   deleteConversion(id: number): void {
     throw new Error("Method not implemented.");
   }
