@@ -30,10 +30,10 @@ class ConversionsRepository implements IConversionsRepository {
 
     return conversion;
   }
-  listAllConversions(id: number): Conversion[] {
-    throw new Error("Method not implemented.");
+  listAllConversions(): Conversion[] {
+    return this.conversions;
   }
-  findById(): Conversion {
+  findById(id: number): Conversion {
     throw new Error("Method not implemented.");
   }
   deleteConversion(id: number): void {

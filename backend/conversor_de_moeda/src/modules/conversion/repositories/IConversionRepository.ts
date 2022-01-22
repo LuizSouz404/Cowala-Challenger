@@ -10,8 +10,8 @@ interface IConversionDTO {
 
 interface IConversionsRepository {
   create(data: IConversionDTO): Conversion;
-  listAllConversions(id: number): Conversion[];
-  findById(): Conversion | undefined;
+  listAllConversions(): Conversion[];
+  findById(id: number): Conversion | undefined;
   deleteConversion(id: number): void;
 }
 
