@@ -2,20 +2,20 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Cowala Documentation",
-    "description": "This is an Api Product",
+    "description": "This is an Api about conversion currency",
     "version": "1.0.0",
     "contact": {
       "email": "luiz.souz404@gmail.com"
     }
   },
   "paths": {
-    "/product/create": {
+    "/conversion/create/:currency": {
       "post": {
         "tags": [
-          "Product"
+          "Conversion"
         ],
-        "summary": "Create an product",
-        "description": "Create an new product",
+        "summary": "Create an conversion",
+        "description": "Create an new conversion",
         "requestBody": {
           "content": {
             "application/json": {
@@ -25,16 +25,22 @@
                   "id": {
                     "type": "number"
                   },
-                  "item": {
+                  "moedaOriginal": {
                     "type": "string"
                   },
-                  "preco": {
+                  "moedaDaConversao": {
+                    "type": "string"
+                  },
+                  "valorEnviado": {
+                    "type": "number"
+                  },
+                  "valorConvertido": {
                     "type": "number"
                   }
                 },
                 "example": {
-                  "item": "Arroz",
-                  "preco": 100
+                  "id": 1,
+                  "valorEnviado": 100
                 }
               }
             }
@@ -47,13 +53,13 @@
         }
       }
     },
-    "/product/list_products": {
+    "/conversion/list_conversions": {
       "get": {
         "tags": [
-          "Product"
+          "Conversion"
         ],
-        "summary": "List all products",
-        "description": "List all products",
+        "summary": "List all conversions",
+        "description": "List all conversions",
         "responses": {
           "201": {
             "description": "Sucess",
@@ -67,10 +73,16 @@
                       "id": {
                         "type": "number"
                       },
-                      "item": {
+                      "moedaOriginal": {
                         "type": "string"
                       },
-                      "preco": {
+                      "moedaDaConversao": {
+                        "type": "string"
+                      },
+                      "valorEnviado": {
+                        "type": "number"
+                      },
+                      "valorConvertido": {
                         "type": "number"
                       }
                     }
@@ -82,18 +94,18 @@
         }
       }
     },
-    "/product/product_detail/{product_id}": {
+    "/conversion/detail_conversions/{conversionID}": {
       "get": {
         "tags": [
-          "Product"
+          "Conversion"
         ],
-        "summary": "Show detail product",
-        "description": "Show a unique detail product",
+        "summary": "Show detail conversion",
+        "description": "Show a unique detail conversion",
         "parameters": [
           {
-            "name": "product_id",
+            "name": "conversionID",
             "in": "path",
-            "description": "The product id need to be provided.",
+            "description": "The conversion id need to be provided.",
             "required": true,
             "type": "string"
           }
@@ -109,10 +121,16 @@
                     "id": {
                       "type": "number"
                     },
-                    "item": {
+                    "moedaOriginal": {
                       "type": "string"
                     },
-                    "preco": {
+                    "moedaDaConversao": {
+                      "type": "string"
+                    },
+                    "valorEnviado": {
+                      "type": "number"
+                    },
+                    "valorConvertido": {
                       "type": "number"
                     }
                   }
@@ -121,84 +139,23 @@
             }
           },
           "404": {
-            "description": "Product not found"
+            "description": "Conversion is not found"
           }
         }
       }
     },
-    "/product/update_product/{product_id}": {
-      "put": {
-        "tags": [
-          "Product"
-        ],
-        "summary": "Updated product price",
-        "description": "Update price product by id",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "product_id",
-            "in": "path",
-            "description": "Price product will be updated",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "in": "body",
-            "name": "body",
-            "description": "Updated product object",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "preco": {
-                  "type": "number"
-                }
-              },
-              "example": {
-                "preco": 75
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Sucess",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "item": {
-                      "type": "string"
-                    },
-                    "preco": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Product not found"
-          }
-        }
-      }
-    },
-    "/product/delete_product/{product_id}": {
+    "/conversion/delete_conversions/{conversionID}": {
       "delete": {
         "tags": [
-          "Product"
+          "Conversion"
         ],
         "summary": "Delete an product",
         "description": "Delete an product",
         "parameters": [
           {
-            "name": "product_id",
+            "name": "conversionID",
             "in": "path",
-            "description": "The product id needs to be provided.",
+            "description": "The Conversion id needs to be provided.",
             "required": true,
             "type": "string"
           }

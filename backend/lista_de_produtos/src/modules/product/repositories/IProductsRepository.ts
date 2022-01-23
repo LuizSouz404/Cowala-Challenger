@@ -1,6 +1,7 @@
 import { Product } from "../model/Product";
 
 interface ICreateProductDTO {
+  id: number;
   item: string;
   preco: number;
 }

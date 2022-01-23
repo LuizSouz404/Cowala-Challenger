@@ -20,13 +20,8 @@ class ProductsRepository implements IProductsRepository {
     return ProductsRepository.INSTANCE;
   }
 
-  create({ item, preco }: ICreateProductDTO): Product {
-    const product = new Product();
-
-    Object.assign(product, {
-      item,
-      preco
-    });
+  create({ id, item, preco }: ICreateProductDTO): Product {
+    const product = new Product({ id, item, preco });
 
     this.products.push(product);
 
@@ -34,7 +29,7 @@ class ProductsRepository implements IProductsRepository {
   }
 
   findById(id: string): Product {
-    const product = this.products.find(product => product.id === id);
+    const product = this.products.find(product => product.id === Number(id));
 
     if (!product) throw new AppError("Product not found", 404);
 
@@ -46,7 +41,7 @@ class ProductsRepository implements IProductsRepository {
   }
 
   updateProduct(id: string, price: number): Product {
-    const product = this.products.findIndex(product => product.id === id);
+    const product = this.products.findIndex(product => product.id === Number(id));
 
     if (product === -1) throw new AppError("Product not found", 404);
 
@@ -56,7 +51,7 @@ class ProductsRepository implements IProductsRepository {
   }
 
   deleteProduct(id: string): void {
-    const product = this.products.findIndex(product => product.id === id);
+    const product = this.products.findIndex(product => product.id === Number(id));
 
     if (!product) throw new AppError("Product not found", 404);
 

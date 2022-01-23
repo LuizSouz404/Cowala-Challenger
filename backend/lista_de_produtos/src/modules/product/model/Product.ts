@@ -1,14 +1,18 @@
-import { v4 as uuidv4 } from 'uuid';
+interface ProductType {
+  id: number;
+  item: string;
+  preco: number;
+}
 
 class Product {
-  id?: string;
+  id: number;
   item: string;
   preco: number;
 
-  constructor() {
-    if (!this.id) {
-      this.id = uuidv4();
-    }
+  constructor({ id, item, preco }: ProductType) {
+    this.id = id;
+    this.item = item;
+    this.preco = preco
   }
 }
 

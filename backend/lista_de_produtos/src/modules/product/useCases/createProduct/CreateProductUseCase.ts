@@ -1,6 +1,7 @@
 import { IProductsRepository } from "../../repositories/IProductsRepository";
 
 interface IRequest {
+  id: number;
   item: string;
   preco: number;
 }
@@ -8,8 +9,8 @@ interface IRequest {
 class CreateProductUseCase {
   constructor(private productsRepository: IProductsRepository) { }
 
-  execute({ item, preco }: IRequest) {
-    return this.productsRepository.create({ item, preco });
+  execute({ id, item, preco }: IRequest) {
+    return this.productsRepository.create({ id, item, preco });
   }
 }
 
