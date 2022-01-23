@@ -9,13 +9,22 @@
     }
   },
   "paths": {
-    "/conversion/create/:currency": {
+    "/conversion/create/{currency}": {
       "post": {
         "tags": [
           "Conversion"
         ],
         "summary": "Create an conversion",
         "description": "Create an new conversion",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "description": "The conversion id need to be provided.",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -149,8 +158,8 @@
         "tags": [
           "Conversion"
         ],
-        "summary": "Delete an product",
-        "description": "Delete an product",
+        "summary": "Delete an conversion register",
+        "description": "Delete an conversion register",
         "parameters": [
           {
             "name": "conversionID",
@@ -165,7 +174,7 @@
             "description": "Deleted"
           },
           "404": {
-            "description": "Product not found"
+            "description": "Conversion not found"
           }
         }
       }
