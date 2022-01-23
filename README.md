@@ -17,7 +17,7 @@
   <a href="#-licença">📝 Licença</a>
 </p>
 
-<img alt="Layout" src="https://user-images.githubusercontent.com/79121809/150434802-13c5d24e-91ed-4f64-9a3a-5ac5ad70c7c2.png">
+<img alt="Layout" src="https://user-images.githubusercontent.com/79121809/150664776-df33cf0f-278d-4e47-afef-bb6df3895027.png">
 
 ## 👨🏻‍💻 Sobre o repositorio
 
@@ -33,6 +33,8 @@ As tecnologias utilizadas nesse projeto foram:
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Figma](https://img.shields.io/badge/Figma-2C2C2C?style=for-the-badge&logo=figma&logoColor=white)
+![NodeJs](https://img.shields.io/badge/node.js-green?style=for-the-badge&logo=node.js&logoColor=000)
+![Express](https://img.shields.io/badge/express-green?style=for-the-badge&logo=express&logoColor=222222)
 
 ## 💻 Começando
 
@@ -61,6 +63,24 @@ $ yarn
 
 # Iniciar o projeto ReactJS
 $ yarn start
+```
+
+<h3>
+  ReactJS
+</h3>
+
+```bash
+$ cd.. && cd backend/conversor_de_moeda
+$ cd.. && cd backend/lista_de_produtos
+```
+
+**Siga os passos abaixo**
+```bash
+# Instalar as depedências
+$ yarn
+
+# Iniciar o projeto NodeJs
+$ yarn dev
 ```
 
 ## 📝 Licença
